@@ -1,0 +1,9 @@
+.display {
+    display:flex;
+    flex-direction: column;
+}
+
+.secondaryDisplay {
+    display:flex;
+    flex-direction: column;
+}
