@@ -14,6 +14,9 @@ export default function TimerBar({
     const [bannerFin, setBannerFin] = useState<boolean>(false);
 
     useEffect(() => {
+        (function() {
+            calcWidth()
+        })()
         const interval = setInterval(calcWidth, 1000);
         return () => clearInterval(interval)
     }, [startTime, endTime])

@@ -26,7 +26,7 @@ const Problems: NextPageWithLayout = () => {
     )
 
     const dataContest = data ? data[0] : {}
-    const problemStatus = data ? data[1] : {}
+    const problemStatus = data ? data[1] : []
 
     console.log(data)
     const { data: session, status }: any = useSession()
@@ -97,20 +97,29 @@ const Problems: NextPageWithLayout = () => {
                     </thead>
                     <tbody>
                         {
-                            problemStatus.map((elem: any) => {
-                                return <>
-                                    <tr>
-                                        <td> {
-                                            elem.status === 'AC'
-                                                ? <Ty color="green" type="h3" weight="bold"> Accepted </Ty>
-                                                : elem.status === 'WA' || elem.status == 'RTE'
-                                                    ? <Ty color="red" type="h3" weight="bold"> Wrong Answer </Ty>
-                                                    : <Ty color="blue" type="h3"> ?  </Ty>
-                                        }
-                                        </td>
-                                    </tr>
-                                </>
-                            })
+                            problemStatus.length > 0 
+                            ?   problemStatus.map((elem: any) => {
+                                    return <>
+                                        <tr>
+                                            <td> {
+                                                elem.status === 'AC'
+                                                    ? <Ty color="green" type="h3" weight="bold"> Accepted </Ty>
+                                                    : elem.status === 'WA' || elem.status == 'RTE'
+                                                        ? <Ty color="red" type="h3" weight="bold"> Wrong Answer </Ty>
+                                                        : <Ty color="blue" type="h3"> ?  </Ty>
+                                            }
+                                            </td>
+                                        </tr>
+                                    </>
+                                })
+                            :   
+                                dataContest.map( (_:any) => {
+                                    return <>
+                                        <tr>
+                                            <td> </td>
+                                        </tr>
+                                    </>
+                                })
                         }
 
                     </tbody>

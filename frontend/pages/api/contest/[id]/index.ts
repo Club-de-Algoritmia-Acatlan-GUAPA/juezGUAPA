@@ -11,8 +11,8 @@ export default function handler(
     res.status(200).json({
         id : id as string,
         name: "Concurso Interpreparatoriano de Programación 2022 (fase final)",
-        startTime: new Date("2022-12-31"),
-        endTime: new Date("2023-01-28"),
+        startTime: new Date("2023-02-01"),
+        endTime: new Date("2023-02-04"),
         bases: [
             {
                 title: "Objetivos",
