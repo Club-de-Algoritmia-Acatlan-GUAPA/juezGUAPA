@@ -1,35 +1,36 @@
 
-Frontend de el `JuezGUAPA`
+Frontend of `JuezGUAPA`
 
-# Correr el 
+# To run 
 
-## Instalar dependencias
+## Install dependencies
 ```
 npm i
 ```
 
 ## Oauth Token github
 
-Sigan [este tutorial](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app) para crear el token de oauth de autenticacion (con esto se registran los usuarios), el callback url es `http://localhost:3000/api/auth/callback`
+Follow [this tutorial](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app) to create the autentication oauth token (you need this to register the users), the url callback is `http://localhost:3000/api/auth/callback`
 
-## Archivo `.env`
-Cuando tengan su `GITHUB_ID` y su `GITHUB_SECRET` crean un archivo llamado `.env` y pegan lo siguiente 
+## File `.env`
+Once you have your `GITHUB_ID` and your `GITHUB_SECRET` create a file called `.env` and paste   
 ```
-GITHUB_SECRET={su secret key de github del oauth}
-GITHUB_ID={su id del oauth}
-SECRET="say_lalisa_love_me_lalisa_love_me_hey" # puede ser cualquier cosa, 
+GITHUB_SECRET="{your github secret key from the oauth application}"
+GITHUB_ID="{your oauth application id}"
+SECRET="say_lalisa_love_me_lalisa_love_me_hey" # it can be anything, 
 HOST="http://localhost:3000"
+
 ```
-## Correr el proyecto 
+## run the project 
 ```
 npm run dev
 ```
-## Hacer build del proyecto
+## build the project
 ```
 npm run build
 ```
 
-## Probar el build ( la version de produccion )
+## Test the build ( production version )
 ```
 npm run start
 ```
