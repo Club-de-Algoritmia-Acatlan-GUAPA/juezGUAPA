@@ -1,0 +1,3 @@
+[submodule "backend/web_server"]
+	path = backend/web_server
+	url = https://github.com/Club-de-Algoritmia-Acatlan-GUAPA/web_server.git
