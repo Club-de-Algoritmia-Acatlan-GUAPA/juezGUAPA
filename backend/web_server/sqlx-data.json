@@ -1,0 +1,188 @@
+{
+  "db": "PostgreSQL",
+  "1482c8a02a15704171784149c14951f39287480bc94ebc1ee46dd3421fa2fbaf": {
+    "describe": {
+      "columns": [
+        {
+          "name": "user_id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text",
+          "Text",
+          "Text"
+        ]
+      }
+    },
+    "query": "\n         INSERT INTO users ( email, password_hash, username )\n         VALUES ( $1, $2, $3 )\n         RETURNING user_id\n         "
+  },
+  "2880480077b654e38b63f423ab40680697a500ffe1af1d1b39108910594b581b": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Text",
+          "Uuid"
+        ]
+      }
+    },
+    "query": "\n        UPDATE users\n        SET password_hash = $1\n        WHERE user_id = $2\n        "
+  },
+  "2eaaa396d0ad8df48aa6da98cdb90a1f835730685cd883e01e42fd5c59c0e4a9": {
+    "describe": {
+      "columns": [
+        {
+          "name": "user_id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "\n            SELECT user_id\n            FROM users\n            WHERE email = $1\n            "
+  },
+  "62b5d49c0c3829e2e37e619c10a03a68db3ed7d11ccf878b43d745b8c294dde2": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Uuid"
+        ]
+      }
+    },
+    "query": "\n            UPDATE users \n            SET is_validated = true\n            WHERE user_id = $1\n        "
+  },
+  "8c15a51714be9caa2d9f221343aec4a2349ee51a1cfd8d41ce81a7d148a2c84f": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Uuid",
+          "Text"
+        ]
+      }
+    },
+    "query": "\n         INSERT INTO confirmation_tokens ( user_id, confirmation_token )\n         VALUES ( $1, $2 )\n         "
+  },
+  "91829dc071f5dc0d5cac6226971ed3b39cda562c6da85feed1300a0283473606": {
+    "describe": {
+      "columns": [
+        {
+          "name": "user_id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "\n            SELECT user_id\n            FROM users\n            WHERE username = $1\n            "
+  },
+  "9d6105265b6b6b3d2682f0013de04ee75d5fd9d22ca32c4840787336211d40da": {
+    "describe": {
+      "columns": [
+        {
+          "name": "user_id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "password_hash",
+          "ordinal": 1,
+          "type_info": "Text"
+        }
+      ],
+      "nullable": [
+        false,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "\n                SELECT user_id, password_hash\n                FROM users\n                WHERE email = $1\n                "
+  },
+  "9f0e49f0ed3a1c6f296a6c8bb472c534d342ab61939a5e8057c773e98e726be0": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Text",
+          "Uuid"
+        ]
+      }
+    },
+    "query": "\n            DELETE FROM confirmation_tokens\n            WHERE confirmation_token = $1\n            AND user_id = $2\n        "
+  },
+  "b9e609d16aaebbd6f9a17410a2c94f4efe07747e13440ae90df9f8baa774e600": {
+    "describe": {
+      "columns": [
+        {
+          "name": "user_id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "password_hash",
+          "ordinal": 1,
+          "type_info": "Text"
+        }
+      ],
+      "nullable": [
+        false,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "\n                SELECT user_id, password_hash\n                FROM users\n                WHERE username = $1\n                "
+  },
+  "d39e0a19e45309e4ab593ae5a40b481b204010b67078924f5d1320d755f78697": {
+    "describe": {
+      "columns": [
+        {
+          "name": "user_id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "\n            SELECT user_id\n            FROM confirmation_tokens\n            WHERE confirmation_token = $1\n        "
+  }
+}
