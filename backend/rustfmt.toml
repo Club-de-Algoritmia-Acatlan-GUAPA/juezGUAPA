@@ -1,0 +1,5 @@
+imports_granularity = "Crate"
+group_imports = "StdExternalCrate"
+reorder_impl_items = true
+wrap_comments = true
+match_block_trailing_comma = true

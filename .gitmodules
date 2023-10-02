@@ -1,3 +1,12 @@
 [submodule "backend/web_server"]
 	path = backend/web_server
 	url = https://github.com/Club-de-Algoritmia-Acatlan-GUAPA/web_server.git
+[submodule "backend/evaluator"]
+	path = backend/evaluator
+	url = https://github.com/Club-de-Algoritmia-Acatlan-GUAPA/evaluator.git
+[submodule "backend/primitypes"]
+	path = backend/primitypes
+	url = https://github.com/Club-de-Algoritmia-Acatlan-GUAPA/primitypes.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/Club-de-Algoritmia-Acatlan-GUAPA/judge_client

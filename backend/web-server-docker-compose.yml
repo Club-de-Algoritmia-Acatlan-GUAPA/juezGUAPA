@@ -1,0 +1,46 @@
+version: '3.1'
+services:
+  web:
+    environment:
+      IS_PROD: 'true'
+      CONFIGURATION_DIRECTORY: 'run/secrets'
+      CONFIGURATION_FILE: 'configuration'
+    build:
+      dockerfile: ./web_server/Dockerfile
+    #image: yollotlfe/web_server:0.0.1
+    #https://stackoverflow.com/questions/70725881/what-is-the-equivalent-of-add-host-host-docker-internalhost-gateway-in-a-comp
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+      - redis
+    secrets:
+      - configuration
+
+  db:
+    image: postgres:15.2-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 'password'
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - cache:/data
+volumes:
+  db:
+    driver: local
+  cache:
+    driver: local
+secrets:
+  configuration:
+    file: ./web_server/configuration/prod.yml
