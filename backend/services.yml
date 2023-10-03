@@ -1,0 +1,55 @@
+version: '3.1'
+services:
+  db:
+    image: postgres:15.2-alpine
+    restart: always
+    container_name: juez_guapa_postgres
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_DB: 'juezguapa'
+    ports:
+      - '8787:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+    expose:
+      - 5432
+  rabbitmq:
+    container_name: juez_guapa_rabbitmq
+    image: rabbitmq:3.11-management-alpine
+    restart: always
+    networks:
+      - network
+    volumes:
+      - queue:/rabbit
+    ports:
+      - "8778:5672"
+      - "7887:15672"
+    expose:
+      - 5672
+  redis:
+    image: redis:6.2-alpine
+    container_name: juez_guapa_redis
+    restart: always
+    ports:
+      - "9999:6379"
+    expose:
+      - 6379
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - cache:/data
+    networks:
+      - network
+volumes:
+  db:
+    driver: local
+  cache:
+    driver: local
+  queue:
+    driver: local
+networks:
+  network:
+    driver: bridge
+secrets:
+  configuration:
+    file: ./web_server/configuration/prod.yml
