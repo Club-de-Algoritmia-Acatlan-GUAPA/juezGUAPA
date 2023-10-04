@@ -11,7 +11,7 @@ services:
     ports:
       - '8787:5432'
     volumes:
-      - db:/var/lib/postgresql/data
+      - db:/data
     expose:
       - 5432
   rabbitmq:
@@ -49,7 +49,5 @@ volumes:
     driver: local
 networks:
   network:
-    driver: bridge
-secrets:
-  configuration:
-    file: ./web_server/configuration/prod.yml
+    name: juezguapa-net
+    external: true
