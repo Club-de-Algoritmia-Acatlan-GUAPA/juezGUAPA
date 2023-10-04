@@ -13,15 +13,15 @@ First `cd` to this direcotry and run the following scripts in the following orde
 ```
 Start a shared network for all the services, and then start postgres, rabbitmq and redis.
 ```bash
-    $ ./start_services
+    $ ./start_services.sh
 ```
 Start a instance of web server, yo will need an authorization token for the smtp client.
 ```bash
-    $ ./start_web_server
+    $ ./start_web_server.sh
 ```
 Finally start an instance of evaluator ( you can start as many as your pc wants hehe)
 ```bash
-    $ ./start_evaluator
+    $ ./start_evaluator.sh
 ```
 
 Currently the judge has two auto-loaded problem in the evaluator cache, but you will need to insert the problems in the database. After initializing the services, you may want to add them:
