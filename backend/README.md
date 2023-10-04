@@ -6,7 +6,7 @@ Steps to get a working instance of the judge:
 - `docker-compose`
 - rust ( `cargo` )
 
-First `cd` to this direcotry and run the following scripts in the following order:
+First `cd` to this directory and run the following scripts in the following order:
 
 ```bash
     $ chmod +x *.sh
@@ -15,7 +15,7 @@ Start a shared network for all the services, and then start postgres, rabbitmq a
 ```bash
     $ ./start_services.sh
 ```
-Start a instance of web server, yo will need an authorization token for the smtp client.
+Start a instance of web server, yo will need an authorization token for the smtp client, you can put your token in 'web_server/configuration/configuration.yml' in the smtp field.
 ```bash
     $ ./start_web_server.sh
 ```
