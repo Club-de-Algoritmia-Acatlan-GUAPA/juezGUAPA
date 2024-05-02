@@ -1,0 +1,11 @@
+nsjail --config ./resources/nsjail.cfg -- /usr/bin/python3 -c "print(1)"
+
+nsjail --config ./resources/nsjail.cfg  \
+--disable_clone_newipc \
+--disable_clone_newns \
+--disable_clone_newcgroup \
+--disable_clone_newnet \
+--disable_clone_newpid \
+--disable_clone_newuser \
+--disable_clone_newuts \
+-- /usr/bin/python3 -c "print(1)"

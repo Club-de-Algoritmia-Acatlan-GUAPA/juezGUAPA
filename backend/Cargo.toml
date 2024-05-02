@@ -2,6 +2,8 @@
 members = [
     "web_server",
     "primitypes",
-    "evaluator"
+    "evaluator", 
+    "testfile"
 ]
+resolver = "2" # edition = 2021
 

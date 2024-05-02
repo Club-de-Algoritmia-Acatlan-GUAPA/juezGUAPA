@@ -1,11 +1,10 @@
-docker build -f ./evaluator/prod.Dockerfile -t prod_evaluator .
+docker buildx build -m 10G --no-cache -f ./evaluator/amd_64.Dockerfile -t prod_evaluator .
 docker run \
 	--rm \
-	-i \
-	-t \
-	--privileged \
-	-it \
+	-d \
 	--network juezguapa-net \
+	--privileged \
 	--add-host=host.docker.internal:host-gateway \
-	-v /Users/yollotl/guapa/judge/juez_guapa/backend/evaluator/configuration/:/app/evaluator/configuration/ \
+	-v /$PWD/evaluator/configuration/:/app/evaluator/configuration/ \
 	prod_evaluator
+

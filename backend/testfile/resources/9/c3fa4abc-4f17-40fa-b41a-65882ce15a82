@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+ 
+public class Main{
+	public static void main(String[] args) throws IOException{
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		PrintWriter out = new PrintWriter(System.out);
+		
+		StringTokenizer tokens = new StringTokenizer(reader.readLine());
+		int n = Integer.parseInt(tokens.nextToken());
+		int x = Integer.parseInt(tokens.nextToken());
+ 
+		int[] array = new int[n];
+		tokens = new StringTokenizer(reader.readLine());
+		for (int i = 0; i < n; i++){
+			array[i] = Integer.parseInt(tokens.nextToken());
+		}
+		int[] arr2 = new int[n];
+		for (int i = 0; i < n; i++){arr2[i] = array[i];}
+		Arrays.sort(array);
+		int lb = 0; int rb = n-1;
+		boolean p = false;
+		int r1 = -1; int l1 = -1;
+		while (lb < rb){
+			if (array[rb] + array[lb] > x){
+				rb--;
+			} else if (array[rb] + array[lb] < x){
+				lb++;
+			} else {
+				for (int i = 0; i < n; i++){
+					if (arr2[i] == array[rb] && r1 == -1){r1 = i; continue;}
+					if (arr2[i] == array[lb]){l1 = i;}
+					if (r1 != -1 && l1 != -1){break;}
+				}
+				out.write(Integer.toString(l1 + 1) + " " + Integer.toString(r1 + 1));					p = true;
+				break;
+			}
+		}
+		if (!p){out.write("IMPOSSIBLE");}
+		out.close();
+	}
+}
+
