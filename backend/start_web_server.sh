@@ -9,6 +9,7 @@ docker run \
 	--add-host=host.docker.internal:host-gateway \
 	--network juezguapa-net \
 	-v /$PWD/web_server/configuration/:/configuration \
+    --env-file ./web_server/configuration/.env \
 	-p 8000:8000 \
 	prod_web_server
 
