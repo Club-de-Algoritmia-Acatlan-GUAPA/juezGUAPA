@@ -13,3 +13,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/Club-de-Algoritmia-Acatlan-GUAPA/judge_client
+[submodule "backend/testcaseFTP"]
+	path = backend/testcaseFTP
+	url = https://github.com/Club-de-Algoritmia-Acatlan-GUAPA/testcaseFTP.git
